@@ -1,0 +1,64 @@
+﻿@model Project1.Models.PritishIncidencies
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Incidencies</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="nID" />
+            <div class="form-group">
+                <label asp-for="sTitol" class="control-label"></label>
+                <input asp-for="sTitol" class="form-control" />
+                <span asp-validation-for="sTitol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sDescripcio" class="control-label"></label>
+                <input asp-for="sDescripcio" class="form-control" />
+                <span asp-validation-for="sDescripcio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sEstat" class="control-label"></label>
+                <input asp-for="sEstat" class="form-control" />
+                <span asp-validation-for="sEstat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sEmailResponsable" class="control-label"></label>
+                <input asp-for="sEmailResponsable" class="form-control" />
+                <span asp-validation-for="sEmailResponsable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dDataCreacio" class="control-label"></label>
+                <input asp-for="dDataCreacio" class="form-control" />
+                <span asp-validation-for="dDataCreacio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sTags" class="control-label"></label>
+                <input asp-for="sTags" class="form-control" />
+                <span asp-validation-for="sTags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pImatge" class="control-label"></label>
+                <input asp-for="pImatge" class="form-control" />
+                <span asp-validation-for="pImatge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

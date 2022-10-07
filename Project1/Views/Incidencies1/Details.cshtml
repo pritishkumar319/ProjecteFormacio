@@ -1,0 +1,60 @@
+﻿@model Project1.Models.PritishIncidencies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Incidencies</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sTitol)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sTitol)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sDescripcio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sDescripcio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sEstat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sEstat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sEmailResponsable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sEmailResponsable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dDataCreacio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dDataCreacio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sTags)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sTags)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pImatge)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pImatge)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.nID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,43 @@
+<div>
+  <p-dialog [(visible)]="bDisplay" [style]="{width: '450px'}" header="{{ 'header-info' | translate }}" [modal]="true" styleClass="p-fluid">
+    <!-- Títol de l'incidencia-->
+    <div class="field">
+      <h4>{{incidencia.sTitol}}</h4>
+      <!--Descripció-->
+      <span class="titol">{{ 'description' | translate }}:</span>
+      <br />
+      <span>{{incidencia.sDescripcio}}</span>
+      <!--Tags-->
+      <br />
+      <br />
+      <div *ngIf="incidencia.sTags">
+        <span>{{ 'tags' | translate }}: </span>
+        <p-tag value={{incidencia.sTags}}></p-tag>
+      </div>
+    </div>
+    <!--Imatge-->
+    <div>
+      <br />
+      <p-avatar icon="pi pi-user" styleClass="mr-2" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+      <span><b>{{ 'responsable' | translate }}: </b></span>
+      <span>{{incidencia.sEmailResponsable}}</span>
+    </div>
+    <p-inplace #inplace >
+      <ng-template pTemplate="display">
+        <h5> {{ 'add-comment' | translate }}</h5>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <textarea pInputTextarea [(ngModel)]="sComentari"></textarea>
+        <div class="container-comentari">
+          <p-button (onClick)="addComment(inplace)" icon="pi pi-check"></p-button>
+          <p-button (onClick)="close(inplace)" icon="pi pi-times"></p-button>
+        </div>
+      </ng-template>
+    </p-inplace>
+    <p *ngIf="llistaComentaris.length > 0 ">Comentaris:</p>
+    <p *ngIf="llistaComentaris.length === 0 ">{{ 'no-comments' | translate }}</p>
+    <div *ngFor="let comment of llistaComentaris">
+      {{comment.sComentari}} - {{comment.sEmailUsuari}}
+    </div>
+  </p-dialog>
+</div>

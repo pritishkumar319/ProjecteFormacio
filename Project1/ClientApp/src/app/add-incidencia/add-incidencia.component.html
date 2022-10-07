@@ -1,0 +1,38 @@
+<div>
+  <!--Formulari per afegir o modificar una incidencia-->
+  <p-dialog [(visible)]="bDisplay" [style]="{width: '450px'}" header="{{sTitolHeader}}" [modal]="true" styleClass="p-fluid">
+    <!-- Títol de l'incidencia-->
+    <div class="field">
+      <label for="titol" class="block">{{ 'titol' | translate }}*</label>
+      <input id="titol" pInputText [(ngModel)]="incidencia.sTitol" autofocus />
+      <small class="p-error" *ngIf="bSubmitted && !incidencia.sTitol">Aquest camp és obligatori.</small>
+    </div>
+    <!--Descripció-->
+    <div class="field">
+      <label for="titol" class="block">{{ 'description' | translate }}*</label>
+      <textarea id="titol" pInputTextarea [(ngModel)]="incidencia.sDescripcio" autofocus></textarea>
+      <small class="p-error" *ngIf="bSubmitted && !incidencia.sDescripcio">{{ 'required-field' | translate }}</small>
+    </div>
+    <!--Tags-->
+    <div class="field mb-2">
+      <label for="tags" class="block">{{ 'tags' | translate }}*</label>
+      <p-chips id="tags" [(ngModel)]="tags" separator=","></p-chips>
+      <small class="p-error" *ngIf="bSubmitted && tags?.length <= 0">{{ 'required-field' | translate }}</small>
+    </div>
+    <!--Imatge-->
+    <p-fileUpload #image (onSelect)="onSelectEvent($event, image)"  mode="basic" accept="image/*" [customUpload]="true" [maxFileSize]="1000000" label="Afegir Imatge" [chooseLabel]="'chooseLabel' | translate" class="mr-2 inline-block"></p-fileUpload>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple label="{{ 'btn-cancel' | translate }}" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+      <button pButton pRipple label="{{ 'btn-save' | translate }}" icon="pi pi-check" class="p-button-text" (click)="guardarIncidencia()"></button>
+    </ng-template>
+  </p-dialog>
+</div>
+
+<!-- toolbar per afegir una nova incidencia-->
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+  </div>
+  <div class="p-toolbar-group-right">
+    <p-button label="{{ 'add-incidencia' | translate }}" icon="pi pi-plus" (click)="showDialog()"></p-button>
+  </div>
+</p-toolbar>

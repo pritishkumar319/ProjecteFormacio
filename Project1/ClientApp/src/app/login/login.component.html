@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>{{ 'login' | translate }}</h1>
+  <h5>{{ 'enter-credentials' | translate }}</h5>
+  <form #form="ngForm" class="form-container">
+    <span *ngIf="createAccount" class="p-input-icon-left inputs">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="{{ 'name' | translate }}" [(ngModel)]="nom" name="nom" />
+    </span>
+    <span *ngIf="createAccount" class="p-input-icon-left inputs">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText placeholder="{{ 'surname' | translate }}" [(ngModel)]="cognoms" name="cognoms" />
+    </span>
+
+
+    <span class="p-input-icon-left inputs">
+      <i class="pi pi-user"></i>
+      <input type="text" pInputText [pKeyFilter]="ccRegex" [pValidateOnly]="true" placeholder="Email" [(ngModel)]="email" name="email" />
+    </span>
+    <p-message severity="error" text="{{ 'valid-email' | translate }}" [@errorState]="submitted && !form.valid ? 'style.display' : 'none'"></p-message>
+    <span class="p-input-icon-left inputs">
+      <i class="pi pi-lock"></i>
+      <input type="password" pInputText placeholder="{{ 'password' | translate }}" [(ngModel)]="password" name="password" />
+    </span>
+    <span *ngIf="createAccount" class="p-input-icon-left inputs">
+      <i class="pi pi-lock"></i>
+      <input type="password" pInputText placeholder="{{ 'confirm-password' | translate }}" [(ngModel)]="repassword" name="repassword" />
+    </span>
+  </form>
+  <p-messages></p-messages>
+  <button *ngIf="!createAccount" pButton pRipple (click)="onClick()" label="{{ 'login' | translate }}" class="p-button-outlined p-button-warning p-button-rounded"></button>
+  <button *ngIf="createAccount" pButton pRipple (click)="guardarUsuari()" label="{{ 'create-account' | translate }}" class="p-button-outlined p-button-warning p-button-rounded"></button>
+  <button style="margin-top:20px" pButton pRipple (click)="crearCompte()" label="{{createOrLogin}}" class="p-button-outlined p-button-danger p-button-rounded"></button>
+</div>
